@@ -76,8 +76,8 @@
                 <goal>install-node-and-yarn</goal>
             </goals>
             <configuration>
-                <nodeVersion>${node.version}</nodeVersion>
-                <yarnVersion>${yarn.version}</yarnVersion>
+                <nodeVersion>18.12.1</nodeVersion>
+                <yarnVersion>1.22.19</yarnVersion>
             </configuration>
         </execution>
         <execution>
