@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Home from './Home';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import ClientList from './ClientList';
-import ClientEdit from "./ClientEdit";
+import CustomerList from './CustomerList';
+import CustomerEdit from './CustomerEdit';
 
 function App() {
     return (
@@ -11,8 +11,8 @@ function App() {
         <BrowserRouter>
           <Switch>
             <Route path='/' exact={true} component={Home}/>
-            <Route path='/clients' exact={true} component={ClientList}/>
-            <Route path='/clients/:id' component={ClientEdit}/>
+            <Route path='/customers' exact={true} component={CustomerList}/>
+            <Route path='/customers/:id' component={CustomerEdit}/>
           </Switch>
         </BrowserRouter>
         </div>
