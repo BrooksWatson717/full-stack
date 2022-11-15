@@ -9,7 +9,6 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import org.springframework.hateoas.CollectionModel;
-import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.brooks.fullstack.definition.Order;
 import com.brooks.fullstack.repository.OrderRepository;
 import com.brooks.fullstack.rest.assembler.OrderModelAssembler;
+import com.brooks.fullstack.rest.model.OrderModel;
 
 @RestController
 @RequestMapping("/orders")
@@ -37,9 +37,9 @@ public class OrderController {
     }
     
     @GetMapping()
-    public CollectionModel<EntityModel<Order>> all() {
+    public CollectionModel<OrderModel> all() {
   
-      List<EntityModel<Order>> orders = repository.findAll().stream()
+      List<OrderModel> orders = repository.findAll().stream()
           .map(assembler::toModel) //
           .collect(Collectors.toList());
   
@@ -47,7 +47,7 @@ public class OrderController {
     }
 
     @GetMapping("/{id}")
-    public EntityModel<Order> one(@PathVariable Long id) {
+    public OrderModel one(@PathVariable Long id) {
   
       Order order = repository.findById(id) //
           .orElseThrow(null);
