@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.brooks.fullstack.definition.Customer;
 import com.brooks.fullstack.repository.CustomerRepository;
 import com.brooks.fullstack.rest.assembler.CustomerModelAssembler;
+import com.brooks.fullstack.rest.model.CustomerModel;
 
 @RestController
 @RequestMapping("/customers")
@@ -39,9 +40,9 @@ public class CustomerController {
     }
     
     @GetMapping()
-    public CollectionModel<EntityModel<Customer>> all() {
+    public CollectionModel<CustomerModel> all() {
   
-      List<EntityModel<Customer>> customers = repository.findAll().stream()
+      List<CustomerModel> customers = repository.findAll().stream()
           .map(assembler::toModel) //
           .collect(Collectors.toList());
   
@@ -50,7 +51,7 @@ public class CustomerController {
 
     
   @GetMapping("/{id}")
-  public EntityModel<Customer> one(@PathVariable Long id) {
+  public CustomerModel one(@PathVariable Long id) {
 
     Customer customer = repository.findById(id) //
         .orElseThrow(null);

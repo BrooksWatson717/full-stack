@@ -14,7 +14,7 @@ class CustomerList extends Component {
     async componentDidMount() {
         const response  = await fetch('/customers');
         const body = await response.json();
-        this.setState({customers: body._embedded.customerList});
+        this.setState({customers: body._embedded.customerModelList});
     }
 
 async remove(id) {
